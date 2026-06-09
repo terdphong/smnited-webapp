@@ -1,0 +1,83 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Admin {
+  id           String @id @default(cuid())
+  passwordHash String
+}
+
+model Supervision {
+  id            String   @id @default(cuid())
+  createdAt     DateTime @default(now())
+  
+  teacherName   String
+  department    String
+  subject       String
+  gradeLevel    String
+  date          String
+  time          String
+  topic         String
+  
+  q1_1          Int
+  q2_1          Int
+  q3_1          Int
+  q4_1          Int
+  q5_1          Int
+  
+  totalScore    Int
+  totalPercent  Float
+  qualityLevel  String
+  
+  strength      String?
+  suggestion    String?
+  
+  sigObserver   String?
+  sigReceiver   String?
+  sigHead       String?
+}
+
+model Observation {
+  id               String   @id @default(cuid())
+  createdAt        DateTime @default(now())
+  
+  teacherName      String
+  subject          String
+  gradeLevel       String
+  term             String
+  academicYear     String
+  date             String
+  time             String
+  topic            String
+  
+  q1               String?
+  q1_note          String?
+  q2               String?
+  q2_note          String?
+  q3               String?
+  q3_note          String?
+  q4               String?
+  q4_note          String?
+  
+  strength         String?
+  success          String?
+  suggestion       String?
+  
+  observerName     String?
+  observerPosition String?
+  receiverName     String?
+  receiverNote     String?
+  headName         String?
+  headNote         String?
+  
+  sigObserver      String?
+  sigReceiver      String?
+  sigHead          String?
+}
